@@ -11,3 +11,4 @@ pyyaml==6.0
 scikit-learn==1.2.1
 scipy==1.10.1
 tqdm==4.64.1
+mlxtend==0.21.0
