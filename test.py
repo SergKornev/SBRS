@@ -31,7 +31,7 @@ events_df['minute'] = events_df.event_date.dt.minute
 events_df['sec'] = events_df.event_date.dt.second
 events_df = events_df.drop(['event_date','time','date'], axis=1)
 
-list_df = []
+list_df = list()
 for i in tqdm(range(len(events_df.visitorid.unique()))):
     time.sleep(0.000000001)
     list_df.append(events_df[events_df.visitorid == i].itemid.to_list())
