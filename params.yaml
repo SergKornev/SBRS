@@ -1,0 +1,13 @@
+data_load:
+  dataset_xlsx: 'datasets/onlineretail/online_retail.xlsx'
+
+
+train: 
+
+  estimator_name: apriori
+  estimators:
+    apriori: 
+      param_grid:
+        pruning: 50 
+        session_key: 'session_key'
+        item_key: 'item_key'
