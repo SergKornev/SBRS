@@ -3,10 +3,7 @@ data_load:
 
 
 train: 
-
-  estimator_name: apriori
-  estimators:
-    apriori: 
-      pruning: 50 
-      session_key: 'session_key'
-      item_key: 'item_key'
+  apriori: 
+    pruning: 50 
+    session_key: 'session_key'
+    item_key: 'item_key'

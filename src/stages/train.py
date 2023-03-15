@@ -1,26 +1,22 @@
 import pandas as pd
 from src.algoritms import association_rules as ar
-from typing import Dict, Text
-
-class UnsupportedClassifier(Exception):
-
-    def __init__(self, estimator_name):
-
-        self.msg = f'Unsupported estimator {estimator_name}'
-        super().__init__(self.msg)
+from typing import Text
 
 
-def get_supported_estimator() -> Dict:
-    """
-    Returns:
-        Dict: supported classifiers
-    """
+def train(df: pd.DataFrame, pruning: int,
+          session_key: Text, item_key: Text, algoritm: Text):
+    if algoritm == 'apriori':
+        AR = ar.AssociationRules(
+            pruning=pruning,
+            session_key=session_key,
+            item_key=item_key
+        )
+        AR.fit(df)
 
-    return {
-        'apriori': ar
-    }
+        return AR
 
-def train(df: pd.DataFrame, target_column: Text,
-          estimator_name: Text, param_grid: Dict,  cv: int):
+    elif algoritm == 'eclat':
+        return 0
 
-    return clf
+    else:
+        return 0
