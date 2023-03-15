@@ -1,5 +1,5 @@
 import pandas as pd
-from src.algoritms import association_rules as ar
+from algoritms import association_rules as ar
 from typing import Text
 
 
