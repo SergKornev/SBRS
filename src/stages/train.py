@@ -6,6 +6,7 @@ from typing import Text
 sys.path.append(os.path.abspath('../SBRS'))
 from src.algoritms import association_rules as ar
 
+
 def train(df: pd.DataFrame, pruning: int,
           session_key: Text, item_key: Text, algoritm: Text):
     if algoritm == 'apriori':
@@ -23,4 +24,3 @@ def train(df: pd.DataFrame, pruning: int,
 
     else:
         return 0
-

@@ -7,3 +7,10 @@ train:
     pruning: 50 
     session_key: 'session_key'
     item_key: 'item_key'
+
+
+evaluate:
+  reports_dir: reports
+  metrics_file: 'metrics.json'
+  item_hist: 'item_hist.png'
+  session_hist: 'session_hist.png'
