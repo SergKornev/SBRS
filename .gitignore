@@ -17,6 +17,6 @@ __pycache__
 data/*
 models/*
 reports/*
-# datasets/*
-# src/*
-# notebooks/*
+ datasets/*
+ src/*
+ notebooks/*
