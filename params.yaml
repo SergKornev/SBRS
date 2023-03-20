@@ -7,6 +7,10 @@ train:
     pruning: 50 
     session_key: 'session_key'
     item_key: 'item_key'
+  eclat:
+    min_support: 0.0001
+    max_items: 4
+    min_items: 2
 
 
 evaluate:
