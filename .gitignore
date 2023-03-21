@@ -14,9 +14,9 @@ __pycache__
 
 
 # Project
-data/*
-models/*
-reports/*
-datasets/*
-src/*
-notebooks/*
+#data/*
+#models/*
+#reports/*
+#datasets/*
+#src/*
+#notebooks/*
