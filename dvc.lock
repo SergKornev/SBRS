@@ -1,0 +1,16 @@
+schema: '2.0'
+stages:
+  data_load:
+    cmd: python -m src.stages.data_load --config=params.yaml
+    deps:
+    - path: src/stages/data_load.py
+      md5: a3d9a8fac5062cbb9d6f29f21ff0eb76
+      size: 829
+    params:
+      params.yaml:
+        data_load:
+          dataset_xlsx: datasets/onlineretail/online_retail.xlsx
+    outs:
+    - path: datasets/onlineretail/online_retail.xlsx
+      md5: d87168bc0519389a886aefb26fcb093a
+      size: 23750485

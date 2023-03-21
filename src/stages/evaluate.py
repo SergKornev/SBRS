@@ -161,8 +161,8 @@ def evaluate_model_MRR(config_path: Text):
     with open(config_path) as conf_file:
         config = yaml.safe_load(conf_file)
 
-    data_apriori = pd.read_csv(config['data_load']['dataset_xlsx'])
-    data_eclat = pd.read_csv(config['data_load']['dataset_xlsx'])
+    data_apriori = pd.read_excel(config['data_load']['dataset_xlsx'])
+    data_eclat = pd.read_excel(config['data_load']['dataset_xlsx'])
     data_eclat = preprocessing.prepr(data_eclat[:201], session_key='session_key', item_key='item_key')
 
     items = data_apriori.item_key.unique()

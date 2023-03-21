@@ -1,0 +1,9 @@
+stages:
+  data_load:
+    cmd: python -m src.stages.data_load --config=params.yaml
+    deps:
+    - src/stages/data_load.py
+    params:
+    - data_load
+    outs:
+    - datasets/onlineretail/online_retail.xlsx
