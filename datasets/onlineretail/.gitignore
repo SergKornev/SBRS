@@ -1,2 +1,2 @@
-# !.gitignore
-# !*.dvc
+ !.gitignore
+ !*.dvc
