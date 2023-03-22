@@ -4,12 +4,16 @@ from typing import Text
 import yaml
 import random
 import numpy as np
-from train import train_apriori, train_eclat
 from pathlib import Path
-from src.report.visualize import session_hist, item_hist
 import argparse
 from abc import ABC, abstractmethod
-import preprocessing
+import sys
+import os
+
+sys.path.append(os.path.abspath('../SBRS'))
+from src.stages.train import train_apriori, train_eclat
+from src.stages import preprocessing
+from src.report.visualize import session_hist, item_hist
 
 
 class Association_Rules(ABC):
@@ -161,8 +165,8 @@ def evaluate_model_MRR(config_path: Text):
     with open(config_path) as conf_file:
         config = yaml.safe_load(conf_file)
 
-    data_apriori = pd.read_excel(config['data_load']['dataset_xlsx'])
-    data_eclat = pd.read_excel(config['data_load']['dataset_xlsx'])
+    data_apriori = pd.read_csv(config['data_load']['dataset_xlsx'])
+    data_eclat = pd.read_csv(config['data_load']['dataset_xlsx'])
     data_eclat = preprocessing.prepr(data_eclat[:201], session_key='session_key', item_key='item_key')
 
     items = data_apriori.item_key.unique()
@@ -187,10 +191,16 @@ def evaluate_model_MRR(config_path: Text):
     apriori_ = Apriori(df=data_apriori, model=AR, items=items)
     eclat_ = Eclat(df=data_eclat, model=ECLAT, items=items)
 
-    test_session, rand_session = apriori_.get_test_session()
-    # test_session, rand_session = ['22487', '20724', '22356', '20723', '20719', '22144', '22141', '22142', '22147',
-    #                               '22150', '22149', '22501', '22752', '21071', '20725', '82483', '37370'], 'test'
+    # test_session, rand_session = apriori_.get_test_session()
+
+    test_session, rand_session = ['22487', '20724', '22356', '20723', '20719', '22144', '22141', '22142', '22147',
+                                  '22150', '22149', '22501', '22752', '21071', '20725', '82483', '37370'], 'test'
+
+    # test_session, rand_session = [22487, 20724, 22356, 20723, 20719, 22144, 22141, 22142, 22147,
+    #                               22150, 22149, 22501, 22752, 21071, 20725, 82483, 37370], 'test'
+
     mrr_apriori = apriori_.get_metric(test_session)
+    print(mrr_apriori)
     mrr_eclat = eclat_.get_metric(test_session)
 
     reports_folder = Path(config['evaluate']['reports_dir'])

@@ -15,7 +15,7 @@ def data_load(config_path: Text) -> None:
     data = data.drop(['Description', 'Quantity', 'UnitPrice', 'userid', 'Country'], axis=1)
     data.rename(columns={'transactionid': 'session_key', 'itemid': 'item_key', 'datetime': 'time_key'}, inplace=True)
 
-    data.to_excel(config['data_load']['dataset_xlsx'], index=False)
+    data.to_csv(config['data_load']['dataset_xlsx'], index=False)
 
 
 if __name__ == '__main__':

@@ -4,13 +4,36 @@ stages:
     cmd: python -m src.stages.data_load --config=params.yaml
     deps:
     - path: src/stages/data_load.py
-      md5: a3d9a8fac5062cbb9d6f29f21ff0eb76
-      size: 829
+      md5: 168f72b5eb38569b44e4c8b4b4e57d90
+      size: 827
     params:
       params.yaml:
         data_load:
           dataset_xlsx: datasets/onlineretail/online_retail.xlsx
     outs:
     - path: datasets/onlineretail/online_retail.xlsx
-      md5: d87168bc0519389a886aefb26fcb093a
-      size: 23750485
+      md5: f14bb7f780bf85d7ad7f46b3f513059f
+      size: 18481290
+  evaluate:
+    cmd: python -m src.stages.evaluate --config=params.yaml
+    deps:
+    - path: src/stages/evaluate.py
+      md5: 762b17f7852a5f4655ce23e10b98670a
+      size: 8487
+    params:
+      params.yaml:
+        evaluate:
+          reports_dir: reports
+          metrics_file: metrics.json
+          item_hist: item_hist.png
+          session_hist: session_hist.png
+    outs:
+    - path: reports/item_hist.png
+      md5: c90f96d69765ae37732027dd82d59e31
+      size: 44441
+    - path: reports/metrics.json
+      md5: b8ce090dec947cedd7d7d553b33853c8
+      size: 77
+    - path: reports/session_hist.png
+      md5: a9b2edd2b4057e3b17fc42fd40ebf6c5
+      size: 38984

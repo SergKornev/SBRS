@@ -7,3 +7,13 @@ stages:
     - data_load
     outs:
     - datasets/onlineretail/online_retail.xlsx
+  evaluate:
+      cmd: python -m src.stages.evaluate --config=params.yaml
+      deps:
+      - src/stages/evaluate.py
+      params:
+      - evaluate
+      outs:
+      - reports/metrics.json
+      - reports/item_hist.png
+      - reports/session_hist.png

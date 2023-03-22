@@ -15,3 +15,4 @@ mlxtend==0.21.0
 pyECLAT==1.0.2
 plotly==5.13.1
 PyYAML==6.0
+openpyxl==3.1.2
